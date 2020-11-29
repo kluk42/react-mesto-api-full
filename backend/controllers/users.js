@@ -95,11 +95,9 @@ const login = async (req, res, next) => {
     try {
         const { password, email } = req.body;
         const user = await User.findUserByCredentials(email, password);
-        console.log('пользователь', user);
-        const { NODE_ENV, JWT_SECRET } = process.env;
-        console.log('process.env', NODE_ENV, JWT_SECRET);
+        const NODE_ENV = 'production';
+        const JWT_SECRET = '6161330a563a2857b56b2aa9773132b13955c9d8520992a9489fd8be5ae0d720';
         const token = jwt.sign({ _id: user._id }, NODE_ENV === 'production' ? JWT_SECRET : 'dev-secret', { expiresIn: '7d' });
-        console.log('token', token);
         return res.status(200).send({ token });
     } catch (err) {
         console.log('ошибка', err);
