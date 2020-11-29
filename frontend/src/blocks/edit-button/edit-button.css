@@ -1,0 +1,29 @@
+.edit-button {
+    cursor: pointer;
+    background-image: url(../../images/Edit-button.svg);
+    background-size: 10px 10px;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-color: black;
+    border: 1px solid #FFFFFF;
+    width: calc(24/1280*100vw);
+    height: calc(24/1280*100vw);
+    max-height: 24px;
+    max-width: 24px;
+    padding: 0;
+    opacity: 1;
+    transition: opacity .5s cubic-bezier(.27,.64,.81,.75);
+}
+
+.edit-button:hover {
+    opacity: .6;
+}
+
+@media (max-width: 845px) {
+    .edit-button {
+        width: calc(18/320*100vw);
+        height: calc(18/320*100vw);
+        max-height: 18px;
+        max-width: 18px;
+    }
+}/**/

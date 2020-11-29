@@ -1,0 +1,12 @@
+@import url(./__brush/profile-avatar__brush.css);
+@import url(./__image/profile-avatar__image.css);
+@import url(./__brush/_state/profile-avatar__brush_state_visible.css);
+
+.profile-avatar {
+    width: 120px;
+    height: 120px;
+    margin-right: calc(30/882*100%);
+    justify-self: flex-start;
+    position: relative;
+}
+

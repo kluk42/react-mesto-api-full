@@ -1,0 +1,10 @@
+.form__input-error {
+    font-family: Inter;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 12px;
+    line-height: calc(15/12);
+    color: #FF0000;
+    opacity: 0;
+    transition: cubic-bezier(0.6, -0.28, 0.735, 0.045);
+}

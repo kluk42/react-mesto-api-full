@@ -1,0 +1,23 @@
+@import url(./__close-button/popup__close-button.css);
+@import url(./__envelope/popup__envelope.css);
+@import url(./__picture/popup__picture.css);
+@import url(./__sign/popup__pic-sign.css);
+@import url(./__header/popup__header.css);
+@import url(./__window/popup__window.css);
+@import url(./__img-status/popup__img-status.css);
+@import url(./__text-status/popup__text-status.css);
+
+.popup {
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+    background-color:rgba(0, 0, 0, .5);
+    top: 0;
+    left: 0;
+    align-items: center;
+    justify-content: center;
+    transition: visibility 1s, opacity 0.5s linear;
+    display: flex;
+    visibility: hidden;
+    opacity: 0;
+}/**/

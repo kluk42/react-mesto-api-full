@@ -1,0 +1,12 @@
+.header__link {
+    font-family: Inter;
+    font-size: 18px;
+    line-height: 22px;
+    text-align: right;
+    color: white;
+    text-decoration: none;
+}
+
+.header__link:hover {
+    text-decoration: underline;
+}

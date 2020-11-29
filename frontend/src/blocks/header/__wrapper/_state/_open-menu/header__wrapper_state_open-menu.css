@@ -1,0 +1,17 @@
+@media screen and (max-width: 845px) {
+    .header__wrapper_state_open-menu {
+        display: flex;
+        visibility: visible;
+        flex-direction: column;
+        align-items: center;
+        grid-row: 1;
+        grid-column: 1/-1;
+        height: 142px;
+        width: 100%;
+        border-bottom: 1px solid rgba(84, 84, 84, .7);
+        justify-content: center;
+    }
+    .header__wrapper_state_open-menu:first-child {
+        margin: 0 0 18px 0;
+    }
+}

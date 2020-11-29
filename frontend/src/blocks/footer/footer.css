@@ -1,0 +1,15 @@
+@import url(./__text/footer__text.css);
+
+.footer {
+    box-sizing: border-box;
+    width: 100%;
+    max-width: 1280px;
+    padding: calc(66/1280*100%) 0 calc(60/1280*100%) calc(199/1280*100%);
+}
+
+@media screen and (max-width: 425px) {
+    .footer {
+        padding: calc(48/320*100%) 0 calc(36/320*100%);
+        width: 100%;
+    }
+}/**/

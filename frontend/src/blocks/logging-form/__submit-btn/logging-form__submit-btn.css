@@ -1,0 +1,16 @@
+.logging-form__submit-btn {
+    cursor: pointer;
+    background-color: white;
+    border: none;
+    padding: 0;
+    width: 100%;
+    height: 50px;
+    margin-top: 216px;
+    font-size: 18px;
+    line-height: 22px;
+    color: black;
+}
+
+.logging-form__submit-btn:hover {
+    opacity: .6;
+}

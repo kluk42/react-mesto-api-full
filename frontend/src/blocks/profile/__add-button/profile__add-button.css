@@ -1,0 +1,9 @@
+.profile__add-button {
+    margin: calc(35/882*100%) 0 0 calc(246/882*100%)
+}
+
+@media screen and (max-width: 845px) {
+    .profile__add-button {
+        margin: calc(36/280*100%) 0 0 0;
+    }
+}

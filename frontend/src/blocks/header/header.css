@@ -1,0 +1,28 @@
+@import url(./__logo/header__logo.css);
+@import url(./__link/header__link.css);
+@import url(./__wrapper/header__wrapper.css);
+@import url(./__email/header__email.css);
+@import url(./__sign-out-btn/header__sign-out-btn.css);
+
+.header {
+    margin: 0 auto;
+    width: calc(882/1280*100vw);
+    max-width: 882px;
+    max-height: 74px;
+    height: calc(74/1280*100vw);
+    padding: 45px 0 0;
+    border-bottom: 1px solid rgba(84, 84, 84, .7);
+    display: flex;
+    justify-content: space-between;
+}
+
+@media screen and (max-width: 845px) {
+    .header {
+        padding: 28px 0 0;
+        width: 100%;
+        min-width: 320px;
+        height: calc(56/320*100vw);
+        min-height: 56px;
+        justify-content: space-around;
+    }
+}

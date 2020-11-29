@@ -1,0 +1,11 @@
+.popup__header {
+    position: relative;
+    width: calc(330/1280*100vw);
+    max-width: 330px;
+    margin: calc(34/430*100%) calc(64/430*100%) calc(54/430*100%) calc(36/430*100%);
+    font-style: normal;
+    font-weight: 900;
+    font-size: 24px;
+    line-height: 29px;
+    color: #000000;
+}/**/

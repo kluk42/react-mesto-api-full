@@ -1,0 +1,12 @@
+.profile__info-line {
+    display: flex;
+    width: 336px;
+    max-width: 336px;
+}
+
+@media (max-width: 845px) {
+    .profile__info-line {
+        margin: 0 auto;
+        width: calc(220/280*100%);
+    }
+}

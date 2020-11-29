@@ -1,0 +1,17 @@
+/* {
+ 
+  outline-width: 1px;
+ 
+  outline-style: solid;
+ 
+  outline-color: green;
+ 
+}*/
+
+.root {
+    font-family: 'Inter', ‘Arial’, sans-serif;
+    color: white;
+    background-color: #000000;
+    margin: 0 auto;
+    min-height: 100vh;
+  }

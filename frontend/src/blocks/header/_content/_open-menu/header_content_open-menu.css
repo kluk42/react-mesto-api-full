@@ -1,0 +1,11 @@
+@media screen and (max-width: 845px) {
+    .header_content_open-menu {
+        display: grid;
+        padding: 0;
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-rows: min-content 83px;
+        height: fit-content;
+        max-height: fit-content;
+        align-items: center;
+    }
+}

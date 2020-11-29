@@ -1,0 +1,12 @@
+@import url(./__name/card__name.css);
+@import url(./__picture/card__picture.css);
+@import url(./__bottom/card__bottom.css);
+
+.card {
+    display:flex;
+    flex-direction: column;
+    background-color: black;
+    color: black;
+    width: 282px;
+    position: relative;
+}/**/

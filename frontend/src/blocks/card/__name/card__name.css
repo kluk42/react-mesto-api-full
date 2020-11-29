@@ -1,0 +1,11 @@
+.card__name {
+    width: calc(225.24/282*100%);
+    margin-left: calc(21/282*100%);
+    font-style: normal;
+    font-weight: 900;
+    font-size: 24px;
+    line-height: calc(29/24);
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+}/**/

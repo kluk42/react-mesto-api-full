@@ -1,0 +1,13 @@
+@import url(./__header/logging-form__header.css);
+@import url(./__input-container/logging-form__input-container.css);
+@import url(./__field/logging-form__field.css);
+@import url(./__input/logging-form__input.css);
+@import url(./__submit-btn/logging-form__submit-btn.css);
+@import url(./__suggestion/logging-form__suggestion.css);
+
+.logging-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 60px;
+}

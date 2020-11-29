@@ -1,0 +1,14 @@
+.profile__info {
+    display: flex;
+    flex-direction: column;
+    width: calc(336/882*100%);
+    max-width: 336px;
+    margin: calc(18/882*100%) 0 calc(25/882*100%) 0;
+}
+
+@media (max-width: 845px) {
+    .profile__info {
+        margin: calc(14/282*100%) auto 0;
+        width: calc(280/282*100%);
+    }
+}

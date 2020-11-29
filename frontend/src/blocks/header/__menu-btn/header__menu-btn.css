@@ -1,0 +1,19 @@
+.header__menu-btn {
+    display: none;
+    visibility: hidden;
+}
+
+@media screen and (max-width: 845px) {
+    .header__menu-btn {
+        display: block;
+        visibility: visible;
+        background: transparent;
+        background-image: url(../../../images/Menu-btn.svg);
+        background-repeat: no-repeat;
+        border: none;
+        padding: 0;
+        background-size: contain;
+        width: 24px;
+        height: 18px;
+    }
+}

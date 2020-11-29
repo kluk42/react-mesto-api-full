@@ -1,0 +1,17 @@
+.logging-form__input-container {
+    padding: 0;
+    margin: 0;
+    border: none;
+    display: grid;
+    grid-column: 1fr;
+    grid-row: repeat(2, minmax(min-content, max-content));
+    gap: 30px;
+    width: calc(358/1280*100vw);
+}
+
+@media screen and (max-width: 845px) {
+    .logging-form__input-container {
+        max-width: 237px;
+        width: calc(260/320*100vw);
+    }
+}

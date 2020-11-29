@@ -1,0 +1,11 @@
+.header__wrapper {
+    display: flex;
+}
+
+@media screen and (max-width: 845px) {
+    .header__wrapper {
+        display: none;
+        visibility: hidden;
+        height: 0;
+    }
+}
