@@ -41,6 +41,7 @@ function App() {
     const history = useHistory();
 
     useEffect (() => {
+        history.push('/');
         const tokenValidator = async () => {
             try {
                 const localToken = localStorage.getItem('token');
