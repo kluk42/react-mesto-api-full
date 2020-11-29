@@ -1,4 +1,4 @@
-export const baseUrl = 'http://localhost:3000/users';
+export const baseUrl = 'https://api.kluk.students.nomoreparties.space/users';
 
 export const register = async ({ email, password }) => {
     const response = await fetch(`${baseUrl}/signup`, {

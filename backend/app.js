@@ -1,7 +1,6 @@
 const express = require('express');
 require('dotenv').config();
 const mongoose = require('mongoose');
-const cookieParser = require('cookie-parser');
 const cors = require('cors');
 const router = require('./routes/router.js');
 const errors = require('./middlewares/errors');
@@ -10,7 +9,6 @@ const { requestLogger, errorLogger } = require('./middlewares/logger');
 const { PORT = 3000 } = process.env;
 const app = express();
 app.use(cors());
-app.use(cookieParser());
 
 const mongodbUrl = 'mongodb://localhost:27017/mydb';
 mongoose.connect(mongodbUrl, {

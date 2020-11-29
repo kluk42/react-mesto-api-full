@@ -10,7 +10,7 @@ const {
 const auth = require('../middlewares/auth');
 const requestValidation = require('../middlewares/request-validation');
 
-router.get('/users/', requestValidation, auth, getUsers);
+router.get('/users', requestValidation, auth, getUsers);
 
 router.get('/users/me', requestValidation, auth, getUser);
 

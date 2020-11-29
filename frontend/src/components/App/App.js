@@ -37,7 +37,7 @@ function App() {
     const [ isSuccessInfoToolTip, setIsSuccessInfoToolTip ] = useState(false);
     const [ isInfoToolTipOpen, setIsInfoToolTipOpen ] = useState(false);
     const [ api, setApi ] = useState({});
-    const [ baseUrl, setBaseUrl ] = useState('http://localhost:3000/');
+    const [ baseUrl, setBaseUrl ] = useState('https://api.kluk.students.nomoreparties.space/');
     const history = useHistory();
 
     useEffect (() => {
