@@ -4,7 +4,7 @@ const mongoose = require('mongoose');
 const cors = require('cors');
 const router = require('./routes/router.js');
 const errors = require('./middlewares/errors');
-// const { requestLogger, errorLogger } = require('./middlewares/logger');
+const { requestLogger, errorLogger } = require('./middlewares/logger');
 
 const { PORT = 5000 } = process.env;
 const app = express();
@@ -21,11 +21,18 @@ mongoose.connect(mongodbUrl, {
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
-// app.use(requestLogger);
+app.use(requestLogger);
+
+app.get('/crash-test', () => {
+    console.log('bang')
+    setTimeout(() => {
+        throw new Error('Сервер сейчас упадёт');
+    }, 0);
+});
 
 app.use('/', router);
 
-// app.use(errorLogger);
+app.use(errorLogger);
 
 app.use((req, res) => {
     res.status(404).send({ message: 'Запрашиваемый ресурс не найден' });
