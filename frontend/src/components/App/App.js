@@ -37,11 +37,11 @@ function App() {
     const [ isSuccessInfoToolTip, setIsSuccessInfoToolTip ] = useState(false);
     const [ isInfoToolTipOpen, setIsInfoToolTipOpen ] = useState(false);
     const [ api, setApi ] = useState({});
-    const [ baseUrl, setBaseUrl ] = useState('https://api.kluk.students.nomoredomains.rocks/');
+    const [ baseUrl, setBaseUrl ] = useState('http://api.kluk.students.nomoredomains.rocks/');
     const history = useHistory();
 
     useEffect (() => {
-        history.push('/');
+//        history.push('/');
         const tokenValidator = async () => {
             try {
                 const localToken = localStorage.getItem('token');
