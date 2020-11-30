@@ -23,13 +23,6 @@ app.use(express.json());
 
 app.use(requestLogger);
 
-app.get('/crash-test', () => {
-    console.log('bang')
-    setTimeout(() => {
-        throw new Error('Сервер сейчас упадёт');
-    }, 0);
-});
-
 app.use('/', router);
 
 app.use(errorLogger);
