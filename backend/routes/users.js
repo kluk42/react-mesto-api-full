@@ -9,7 +9,6 @@ const {
 } = require('../controllers/users');
 const auth = require('../middlewares/auth');
 const requestValidation = require('../middlewares/request-validation');
-const app = require('../app');
 
 router.get('/users', requestValidation, auth, getUsers);
 
