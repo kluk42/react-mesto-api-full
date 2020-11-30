@@ -6,4 +6,4 @@
 
 
 130.193.59.31
-kluk.students.nomoreparties.space
+http://kluk.students.nomoredomains.rocks
