@@ -1,4 +1,4 @@
-export const baseUrl = 'http://api.kluk.students.nomoredomains.rocks/users';
+export const baseUrl = 'http://api.kluk.students.nomoredomains.rocks';
 
 export const register = async ({ email, password }) => {
     const response = await fetch(`${baseUrl}/signup`, {
@@ -33,7 +33,7 @@ export const authorize = async ({ email, password }) => {
 };
 
 export const authorization = async (token) => {
-    const response = await fetch(`${baseUrl}/me`, {
+    const response = await fetch(`${baseUrl}/users/me`, {
         method: 'GET',
         headers: {
             "Content-Type": "application/json",

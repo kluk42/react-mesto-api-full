@@ -4,6 +4,7 @@ const WrongRequestErr = require('../errors/wrong-request-err');
 module.exports = (req, res, next) => {
     const { id, cardId } = req.params;
     const { authorization } = req.headers;
+
     if (((!mongoose.Types.ObjectId.isValid(id)) && (id !== undefined))) {
         const idErr = new WrongRequestErr('Неверный id');
         return next(idErr);
@@ -14,9 +15,15 @@ module.exports = (req, res, next) => {
         return next(idErr);
     }
 
-    if (!authorization.startsWith('Bearer ')) {
+    if ((authorization !== undefined) && (!authorization.startsWith('Bearer '))) {
         const tokenErr = new WrongRequestErr('В authorization отсутствует Bearer');
         next(tokenErr);
     }
+
+    if (!authorization) {
+        const tokenErr = new WrongRequestErr('Требуется авторизация');
+        next(tokenErr);
+    }
+
     return next();
 };

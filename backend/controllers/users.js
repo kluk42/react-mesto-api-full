@@ -15,9 +15,19 @@ const getUsers = async (req, res, next) => {
     }
 };
 
-const getUser = async (req, res, next) => {
+const getMe = async (req, res, next) => {
     try {
         const requestedUser = await User.findById(req.user);
+        if (!requestedUser) throw new NotFoundErr('Пользотватель не найден');
+        return res.send(requestedUser);
+    } catch (err) {
+        return next(err);
+    }
+};
+
+const getUser = async (req, res, next) => {
+    try {
+        const requestedUser = await User.findById(req.params.userId);
         if (!requestedUser) throw new NotFoundErr('Пользотватель не найден');
         return res.send(requestedUser);
     } catch (err) {
@@ -46,7 +56,8 @@ const createUser = async (req, res, next) => {
                 if (err.name === 'ValidationError') throw new WrongRequestErr('Неправильно заполнен запрос');
                 throw err;
             });
-        return res.status(200).send(`${user.name}, регистрация прошла успешно. Авторизуйтесь`);
+        const successMsg = `${user.name}, регистрация прошла успешно. Авторизуйтесь`;
+        return res.status(200).send({ successMsg });
     } catch (err) {
         return next(err);
     }
@@ -100,13 +111,13 @@ const login = async (req, res, next) => {
         const token = jwt.sign({ _id: user._id }, NODE_ENV === 'production' ? JWT_SECRET : 'dev-secret', { expiresIn: '7d' });
         return res.status(200).send({ token });
     } catch (err) {
-        console.log('ошибка', err);
         return next(err);
     }
 };
 
 module.exports = {
     getUsers,
+    getMe,
     getUser,
     createUser,
     updateUser,

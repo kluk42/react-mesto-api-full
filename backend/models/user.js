@@ -6,21 +6,18 @@ const NotFoundErr = require('../errors/not-found-err.js');
 const userSchema = new mongoose.Schema({
     name: {
         type: String,
-        required: false,
         default: 'Жак-Ив Кусто',
         minlength: 2,
         maxlength: 30,
     },
     about: {
         type: String,
-        required: false,
         default: 'Исследователь океана',
         minlength: 2,
         maxlength: 30,
     },
     avatar: {
         type: String,
-        required: false,
         default: 'https://pictures.s3.yandex.net/resources/jacques-cousteau_1604399756.png',
         validate: {
             validator(v) {
@@ -53,7 +50,6 @@ userSchema.statics.findUserByCredentials = async function findUserByCredentials(
     if (!user) throw (new NotFoundErr('Неправильные почта или пароль!'));
     const matched = await bcrypt.compare(password, user.password);
     if (!matched) throw (new NotFoundErr('Неправильный пароль'));
-    console.log(user)
     return user;
 };
 
