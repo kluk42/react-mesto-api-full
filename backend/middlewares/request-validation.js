@@ -1,7 +1,23 @@
 const mongoose = require('mongoose');
 const WrongRequestErr = require('../errors/wrong-request-err');
 
-module.exports = (req, res, next) => {
+const urlValidation = (value) => {
+    const regEx = /^https?:\/\/(www\.)?[\w-.~:/?#[\]@!$&'\\*+,;=]+#?$/gm;
+    const testResult = regEx.test(value);
+    if (!testResult) {
+        throw new WrongRequestErr('Неверная ссылка');
+    }
+    return value;
+};
+
+const tokenValidation = (value) => {
+    if (!value.startsWith('Bearer ')) {
+        throw new WrongRequestErr('В authorization отсутствует Bearer');
+    }
+    return value;
+};
+
+const requestValidation = (req, res, next) => {
     const { id, cardId } = req.params;
     const { authorization } = req.headers;
 
@@ -26,4 +42,10 @@ module.exports = (req, res, next) => {
     }
 
     return next();
+};
+
+module.exports = {
+    requestValidation,
+    urlValidation,
+    tokenValidation,
 };
