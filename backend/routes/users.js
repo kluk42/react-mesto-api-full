@@ -4,10 +4,8 @@ const {
     getUsers,
     getUser,
     getMe,
-    createUser,
     updateUser,
     updateAvatar,
-    login,
 } = require('../controllers/users');
 const auth = require('../middlewares/auth');
 const { urlValidation, tokenValidation } = require('../middlewares/request-validation');
@@ -51,28 +49,5 @@ router.patch('/users/me/avatar', celebrate({
         authorization: Joi.string().custom(tokenValidation).required(),
     }).unknown(true),
 }), auth, updateAvatar);
-
-router.get('/crash-test', () => {
-    setTimeout(() => {
-        throw new Error('Сервер сейчас упадёт');
-    }, 0);
-});
-
-router.post('/signin', celebrate({
-    body: Joi.object().keys({
-        email: Joi.string().required().email(),
-        password: Joi.string().required().min(6),
-    }),
-}), login);
-
-router.post('/signup', celebrate({
-    body: Joi.object().keys({
-        email: Joi.string().required().email(),
-        password: Joi.string().required().min(8),
-        name: Joi.string().min(2),
-        about: Joi.string().min(2),
-        avatar: Joi.string().custom(urlValidation),
-    }),
-}), createUser);
 
 module.exports = router;
