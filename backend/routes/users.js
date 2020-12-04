@@ -46,7 +46,7 @@ router.patch('/users/me', celebrate({
 router.patch('/users/me/avatar', celebrate({
     body: Joi.object().keys({
         avatar: Joi.string().custom(urlValidation).required(),
-    }).unknown(true),
+    }),
     headers: Joi.object().keys({
         authorization: Joi.string().custom(tokenValidation).required(),
     }).unknown(true),
@@ -62,14 +62,17 @@ router.post('/signin', celebrate({
     body: Joi.object().keys({
         email: Joi.string().required().email(),
         password: Joi.string().required().min(6),
-    }).unknown(true),
+    }),
 }), login);
 
 router.post('/signup', celebrate({
     body: Joi.object().keys({
         email: Joi.string().required().email(),
         password: Joi.string().required().min(8),
-    }).unknown(true),
+        name: Joi.string().min(2),
+        about: Joi.string().min(2),
+        avatar: Joi.string().custom(urlValidation),
+    }),
 }), createUser);
 
 module.exports = router;

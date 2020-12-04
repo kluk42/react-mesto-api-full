@@ -65,7 +65,8 @@ const createUser = async (req, res, next) => {
 
 const updateUser = async (req, res, next) => {
     try {
-        const { name, about } = req.body;
+        const oldUser = await User.findById(req.user);
+        const { name = oldUser.name, about = oldUser.about } = req.body;
         const opts = { runValidators: true, new: true };
         const updatedUser = await User.findByIdAndUpdate(req.user, { name, about }, opts)
             .orFail(new NotFoundErr('Такого пользователя нет, зарегистрируйтесь'))

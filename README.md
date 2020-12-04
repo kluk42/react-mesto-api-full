@@ -7,3 +7,4 @@
 
 130.193.59.31
 http://kluk.students.nomoredomains.rocks
+http://api.kluk.students.nomoredomains.rocks
