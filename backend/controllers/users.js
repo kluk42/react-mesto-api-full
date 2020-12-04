@@ -38,7 +38,7 @@ const getUser = async (req, res, next) => {
 const createUser = async (req, res, next) => {
     try {
         const {
-            name, about, avatar, email, password,
+            name = 'Жак-Ив Кусто', about = 'Исследователь океана', avatar = 'https://pictures.s3.yandex.net/resources/jacques-cousteau_1604399756.png', email, password,
         } = req.body;
         const isUniqueEmail = await User.findOne({ email }); // Если не найдёт, то вернёт null
         if (isUniqueEmail) {
