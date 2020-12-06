@@ -13,7 +13,7 @@ const { tokenValidation, urlValidation } = require('../middlewares/request-valid
 router.get('/cards', celebrate({
     headers: Joi.object().keys({
         authorization: Joi.string().custom(tokenValidation).required(),
-    }),
+    }).unknown(true),
 }), auth, getCards);
 
 router.post('/cards', celebrate({
@@ -23,7 +23,7 @@ router.post('/cards', celebrate({
     }),
     headers: Joi.object().keys({
         authorization: Joi.string().custom(tokenValidation).required(),
-    }),
+    }).unknown(true),
 }), auth, createCard);
 
 router.delete('/cards/:cardId', celebrate({
@@ -32,7 +32,7 @@ router.delete('/cards/:cardId', celebrate({
     }),
     headers: Joi.object().keys({
         authorization: Joi.string().custom(tokenValidation).required(),
-    }),
+    }).unknown(true),
 }), auth, deleteCard);
 
 router.put('/cards/:cardId/likes', celebrate({
@@ -41,7 +41,7 @@ router.put('/cards/:cardId/likes', celebrate({
     }),
     headers: Joi.object().keys({
         authorization: Joi.string().custom(tokenValidation).required(),
-    }),
+    }).unknown(true),
 }), auth, likeCard);
 
 router.delete('/cards/:cardId/likes', celebrate({
@@ -50,7 +50,7 @@ router.delete('/cards/:cardId/likes', celebrate({
     }),
     headers: Joi.object().keys({
         authorization: Joi.string().custom(tokenValidation).required(),
-    }),
+    }).unknown(true),
 }), auth, dislikeCard);
 
 module.exports = router;

@@ -13,13 +13,13 @@ const { urlValidation, tokenValidation } = require('../middlewares/request-valid
 router.get('/users', celebrate({
     headers: Joi.object().keys({
         authorization: Joi.string().custom(tokenValidation).required(),
-    }),
+    }).unknown(true),
 }), auth, getUsers);
 
 router.get('/users/me', celebrate({
     headers: Joi.object().keys({
         authorization: Joi.string().custom(tokenValidation).required(),
-    }),
+    }).unknown(true),
 }), auth, getMe);
 
 router.get('/users/:userId', celebrate({
@@ -28,7 +28,7 @@ router.get('/users/:userId', celebrate({
     }),
     headers: Joi.object().keys({
         authorization: Joi.string().custom(tokenValidation).required(),
-    }),
+    }).unknown(true),
 }), auth, getUser);
 
 router.patch('/users/me', celebrate({
@@ -38,7 +38,7 @@ router.patch('/users/me', celebrate({
     }),
     headers: Joi.object().keys({
         authorization: Joi.string().custom(tokenValidation).required(),
-    }),
+    }).unknown(true),
 }), auth, updateUser);
 
 router.patch('/users/me/avatar', celebrate({
@@ -47,7 +47,7 @@ router.patch('/users/me/avatar', celebrate({
     }),
     headers: Joi.object().keys({
         authorization: Joi.string().custom(tokenValidation).required(),
-    }),
+    }).unknown(true),
 }), auth, updateAvatar);
 
 module.exports = router;
