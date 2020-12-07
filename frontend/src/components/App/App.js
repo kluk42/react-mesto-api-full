@@ -37,7 +37,7 @@ function App() {
     const [ isSuccessInfoToolTip, setIsSuccessInfoToolTip ] = useState(false);
     const [ isInfoToolTipOpen, setIsInfoToolTipOpen ] = useState(false);
     const [ api, setApi ] = useState({});
-    const [ baseUrl, setBaseUrl ] = useState('http://api.kluk.students.nomoredomains.rocks/');
+    const [ baseUrl, setBaseUrl ] = useState('http://localhost:5000/');
     const history = useHistory();
 
     useEffect (() => {
@@ -228,13 +228,14 @@ function App() {
             history.push('/');
 
         } catch (err) {
+            console.log(err)
             if (err.status === 401) {
                 setInfoToolTipErrorMessage('Неверный пользователь или пароль');
                 setIsSuccessInfoToolTip(false);
                 setIsInfoToolTipOpen(true);
             }
             if (err.status === 400) {
-                setInfoToolTipErrorMessage('Пользователь с email не найден');
+                setInfoToolTipErrorMessage('Неправильный email или пароль короче 6-ти символов');
                 setIsSuccessInfoToolTip(false);
                 setIsInfoToolTipOpen(true);
             }
@@ -254,11 +255,11 @@ function App() {
             setIsInfoToolTipOpen(true);
         } catch (err) {
             if (err.status === 400) {
-                setInfoToolTipErrorMessage('Некорректно заполнено одно из полей')
+                setInfoToolTipErrorMessage(err.message);
                 setIsSuccessInfoToolTip(false);
                 setIsInfoToolTipOpen(true);
             } else {
-                setInfoToolTipErrorMessage('Что-то пошло не так')
+                setInfoToolTipErrorMessage('Что-то пошло не так');
                 setIsSuccessInfoToolTip(false);
                 setIsInfoToolTipOpen(true);
             }

@@ -1,4 +1,4 @@
-export const baseUrl = 'http://api.kluk.students.nomoredomains.rocks';
+export const baseUrl = 'http://localhost:5000';
 
 export const register = async ({ email, password }) => {
     const response = await fetch(`${baseUrl}/signup`, {
@@ -13,7 +13,15 @@ export const register = async ({ email, password }) => {
     })
     if (response.ok) {
         return response
-    } else {return Promise.reject({status: response.status})}
+    } else {
+        const errParsed = await response.json();
+        console.log(errParsed)
+        return Promise.reject({
+            status: response.status,
+            message: errParsed.message !== 'celebrate request validation failed' ? errParsed.message : 'Длинна пароля не менее 8 символов, в поле email должен быть верный адрес электронной почты',
+            status: response.status,
+        })
+    }
 };
 
 export const authorize = async ({ email, password }) => {
@@ -29,7 +37,12 @@ export const authorize = async ({ email, password }) => {
     })
     if (response.ok) {
         return response
-    } else {return Promise.reject({status: response.status})} 
+    } else {
+        const err = await response.json();
+        console.log(err)
+        console.log(`Ошибка: ${response.status}`)
+        return Promise.reject({status: response.status})
+    } 
 };
 
 export const authorization = async (token) => {
