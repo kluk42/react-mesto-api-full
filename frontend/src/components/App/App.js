@@ -37,7 +37,7 @@ function App() {
     const [ isSuccessInfoToolTip, setIsSuccessInfoToolTip ] = useState(false);
     const [ isInfoToolTipOpen, setIsInfoToolTipOpen ] = useState(false);
     const [ api, setApi ] = useState({});
-    const [ baseUrl, setBaseUrl ] = useState('http://api.kluk.students.nomoredomains.rocks/');
+    const [ baseUrl, setBaseUrl ] = useState('http://localhost:5000/');
     const history = useHistory();
 
     useEffect (() => {
@@ -230,7 +230,7 @@ function App() {
         } catch (err) {
             console.log(err)
             if (err.status === 401) {
-                setInfoToolTipErrorMessage('Неверный пользователь или пароль');
+                setInfoToolTipErrorMessage('Неправильный email или пароль');
                 setIsSuccessInfoToolTip(false);
                 setIsInfoToolTipOpen(true);
             }
@@ -254,11 +254,17 @@ function App() {
             setIsSuccessInfoToolTip(true);
             setIsInfoToolTipOpen(true);
         } catch (err) {
-            if (err.status === 400) {
+            if (err.status === 409) {
                 setInfoToolTipErrorMessage(err.message);
                 setIsSuccessInfoToolTip(false);
                 setIsInfoToolTipOpen(true);
-            } else {
+            }
+            if (err.status === 400) {
+                setInfoToolTipErrorMessage('Неправильный email или пароль короче 8-ми символов');
+                setIsSuccessInfoToolTip(false);
+                setIsInfoToolTipOpen(true);
+            }
+            if ((err.status !== 400) && (err.status !== 409)) {
                 setInfoToolTipErrorMessage('Что-то пошло не так');
                 setIsSuccessInfoToolTip(false);
                 setIsInfoToolTipOpen(true);
