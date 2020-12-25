@@ -1,4 +1,5 @@
 const express = require('express');
+const helmet = require('helmet');
 require('dotenv').config();
 const mongoose = require('mongoose');
 const cors = require('cors');
@@ -6,10 +7,14 @@ const { errors } = require('celebrate');
 const router = require('./routes/router.js');
 const errorsCentral = require('./middlewares/errors');
 const { requestLogger, errorLogger } = require('./middlewares/logger');
+const limiter = require('./middlewares/rate-limiter');
 
 const { PORT = 5000 } = process.env;
 const app = express();
 app.use(cors());
+app.set('trust proxy', 1);
+app.use(limiter);
+app.use(helmet());
 
 const { mongodbUrl = 'mongodb://localhost:27017/mydb' } = process.env;
 mongoose.connect(mongodbUrl, {
