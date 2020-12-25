@@ -37,7 +37,7 @@ function App() {
     const [ isSuccessInfoToolTip, setIsSuccessInfoToolTip ] = useState(false);
     const [ isInfoToolTipOpen, setIsInfoToolTipOpen ] = useState(false);
     const [ api, setApi ] = useState({});
-    const [ baseUrl, setBaseUrl ] = useState('http://kluk.students.nomoredomains.rocks/');
+    const [ baseUrl, setBaseUrl ] = useState('http://localhost:5000/');
     const history = useHistory();
 
     useEffect (() => {

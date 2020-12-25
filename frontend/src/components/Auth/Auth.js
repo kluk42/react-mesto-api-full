@@ -1,4 +1,4 @@
-export const baseUrl = 'http://kluk.students.nomoredomains.rocks';
+export const baseUrl = 'http://localhost:5000';
 
 export const register = async ({ email, password }) => {
     const response = await fetch(`${baseUrl}/signup`, {
