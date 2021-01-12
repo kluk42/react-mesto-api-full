@@ -17,9 +17,9 @@ class Api {
                 'content-type': 'application/json'
             }
         })
-        .then(res => {
-            return this._resultsProcessing(res)
-        })
+            .then(res => {
+                return this._resultsProcessing(res)
+            })
     }
 
     getUserInfo () {
@@ -29,9 +29,9 @@ class Api {
                 'content-type': 'application/json'
             }
         })
-        .then(res => {
-            return this._resultsProcessing(res)
-        })
+            .then(res => {
+                return this._resultsProcessing(res)
+            })
     }
 
     sendUserInfo(data) {
@@ -40,15 +40,15 @@ class Api {
             headers: {
                 authorization: `Bearer ${this._token}`,
                 'Content-Type': 'application/json'
-        },
+            },
             body: JSON.stringify({
-            name: data.newName,
-            about: data.about
-  })
-})
-        .then(res => {
-            return this._resultsProcessing(res)
+                name: data.newName,
+                about: data.about
+            })
         })
+            .then(res => {
+                return this._resultsProcessing(res)
+            })
     }
 
     deleteCard (id) {
@@ -59,9 +59,9 @@ class Api {
                 'content-type': 'application/json'
             },
         })
-        .then(res => {
-            return this._resultsProcessing(res)
-        })
+            .then(res => {
+                return this._resultsProcessing(res)
+            })
     }
 
     likeCard (id) {
@@ -72,9 +72,9 @@ class Api {
                 'Content-Type': 'application/json'
             }
         })
-        .then(res => {
-            return this._resultsProcessing(res)
-        })
+            .then(res => {
+                return this._resultsProcessing(res)
+            })
     }
 
     dislikeCard (id) {
@@ -86,9 +86,9 @@ class Api {
                 'Content-Type': 'application/json'
             }
         })
-        .then(res => {
-            return this._resultsProcessing(res)
-        })
+            .then(res => {
+                return this._resultsProcessing(res)
+            })
     }
 
     uploadCard (card) {
@@ -103,9 +103,9 @@ class Api {
                 link: card.link
             })
         })
-        .then(res => {
-            return this._resultsProcessing(res)
-        })
+            .then(res => {
+                return this._resultsProcessing(res)
+            })
     }
 
     uploadAvatar (avatarLink) {
@@ -119,9 +119,9 @@ class Api {
                 avatar: avatarLink
             })
         })
-        .then(res => {
-            return this._resultsProcessing(res)
-        })
+            .then(res => {
+                return this._resultsProcessing(res)
+            })
     }
 }
 

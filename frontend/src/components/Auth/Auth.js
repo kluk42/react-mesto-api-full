@@ -14,13 +14,7 @@ export const register = async ({ email, password }) => {
     if (response.ok) {
         return response
     } else {
-        const errParsed = await response.json();
-        console.log(errParsed)
-        return Promise.reject({
-            status: response.status,
-            message: errParsed.message !== 'celebrate request validation failed' ? errParsed.message : 'Длинна пароля не менее 8 символов, в поле email должен быть верный адрес электронной почты',
-            status: response.status,
-        })
+        return Promise.reject(response);
     }
 };
 
@@ -38,10 +32,8 @@ export const authorize = async ({ email, password }) => {
     if (response.ok) {
         return response
     } else {
-        const err = await response.json();
-        console.log(err)
         console.log(`Ошибка: ${response.status}`)
-        return Promise.reject({status: response.status})
+        return Promise.reject(response)
     } 
 };
 

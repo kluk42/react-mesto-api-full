@@ -20,35 +20,6 @@
     "eject": "react-scripts eject",
     "deploy": "npm run build && scp -r ./build/* kluk@130.193.59.31:/home/kluk/react-mesto-api-full/frontend-news"
   },
-  "eslintConfig": {
-    "extends": "react-app",
-    "overrides": [
-      {
-        "files": [
-          "**/*.js?(x)"
-        ],
-        "rules": {
-          "no-underscore-dangle": [
-            "error",
-            {
-              "allow": [
-                "_id"
-              ]
-            }
-          ],
-          "linebreak-style": [
-            "error",
-            "windows"
-          ],
-          "indent": [
-            "error",
-            4
-          ],
-          "no-console": "off"
-        }
-      }
-    ]
-  },
   "browserslist": {
     "production": [
       ">0.2%",

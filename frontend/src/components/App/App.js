@@ -41,7 +41,7 @@ function App() {
     const history = useHistory();
 
     useEffect (() => {
-//        history.push('/');
+        //        history.push('/');
         const tokenValidator = async () => {
             try {
                 const localToken = localStorage.getItem('token');
@@ -104,6 +104,7 @@ function App() {
         setIsEditAvatarPopupOpen(false);
         setIsImgPopupOpen(false);
         setIsConfirmationPopupOpen(false);
+        setIsInfoToolTipOpen(false);
         window.removeEventListener('keydown', handleEscClose);
     }
 
@@ -216,7 +217,6 @@ function App() {
             evt.preventDefault();
             const response = await authorize(loggingData);
             const data = await response.json();
-            console.log(data.token);
             localStorage.setItem('token', data.token);
             setApi(new Api({ baseUrl, token: data.token }));
             setIsLoggedIn(true);
@@ -228,21 +228,19 @@ function App() {
             history.push('/');
 
         } catch (err) {
-            console.log(err)
+            const errParsed = await err.json();
+            setIsSuccessInfoToolTip(false);
+            setIsInfoToolTipOpen(true);
+            window.addEventListener('keydown',  handleEscClose)
             if (err.status === 401) {
                 setInfoToolTipErrorMessage('Неправильный email или пароль');
-                setIsSuccessInfoToolTip(false);
-                setIsInfoToolTipOpen(true);
             }
             if (err.status === 400) {
-                setInfoToolTipErrorMessage('Неправильный email или пароль короче 6-ти символов');
-                setIsSuccessInfoToolTip(false);
-                setIsInfoToolTipOpen(true);
+                const errMessage = errParsed.validation.body.message.includes('email') ? 'Неправильный email' : 'Пароль должен быть не короче 6-ти символов'
+                setInfoToolTipErrorMessage(errMessage);
             }
             if ((err.status !== 400) && (err.status !== 401)) {
                 setInfoToolTipErrorMessage('Что-то пошло не так');
-                setIsSuccessInfoToolTip(false);
-                setIsInfoToolTipOpen(true);
             }
         }
     }
@@ -254,20 +252,19 @@ function App() {
             setIsSuccessInfoToolTip(true);
             setIsInfoToolTipOpen(true);
         } catch (err) {
+            const errParsed = await err.json();
+            setIsSuccessInfoToolTip(false);
+            setIsInfoToolTipOpen(true);
+            window.addEventListener('keydown',  handleEscClose)
             if (err.status === 409) {
-                setInfoToolTipErrorMessage(err.message);
-                setIsSuccessInfoToolTip(false);
-                setIsInfoToolTipOpen(true);
+                setInfoToolTipErrorMessage(errParsed.message);
             }
             if (err.status === 400) {
-                setInfoToolTipErrorMessage('Неправильный email или пароль короче 8-ми символов');
-                setIsSuccessInfoToolTip(false);
-                setIsInfoToolTipOpen(true);
+                const errMessage = errParsed.validation.body.message.includes('email') ? 'Неправильный email' : 'Пароль должен быть не короче 6-ти символов';
+                setInfoToolTipErrorMessage(errMessage);
             }
             if ((err.status !== 400) && (err.status !== 409)) {
                 setInfoToolTipErrorMessage('Что-то пошло не так');
-                setIsSuccessInfoToolTip(false);
-                setIsInfoToolTipOpen(true);
             }
         }
     }
@@ -322,7 +319,7 @@ function App() {
                         <Route path="/sign-in">
                             <Header link={headerLink} />
                             <Login onLogin={handleLogin} headerLinkSetter={headerLinkSetter} />
-                            {isInfoToolTipOpen && <InfoToolTip isSuccess={isSuccessInfoToolTip} onClose={onCloseInfoToolTipFailure} errorMessage={infoToolTipErrorMessage}></InfoToolTip>}
+                            {isInfoToolTipOpen && <InfoToolTip clickPopupOverlay={clickPopupOverlay} isSuccess={isSuccessInfoToolTip} onClose={onCloseInfoToolTipFailure} errorMessage={infoToolTipErrorMessage}></InfoToolTip>}
                         </Route>
                         <Route path="/sign-up">
                             <Header link={headerLink} />
